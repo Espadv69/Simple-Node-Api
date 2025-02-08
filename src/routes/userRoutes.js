@@ -8,4 +8,9 @@ let users = [
   { id: 2, name: 'Alice' },
 ]
 
+// Get all users (GET /users)
+router.get('/', (req, res) => {
+  res.json(users)
+})
+
 export default router
