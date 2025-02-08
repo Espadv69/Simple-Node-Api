@@ -44,3 +44,10 @@ app.put('/users/:id', (req, res) => {
     res.status(400).json({ message: 'User not found' })
   }
 })
+
+// Ruta para eliminar a usuario por ID
+app.delete('/users/:id', (req, res) => {
+  const { id } = req.params
+  users.filter((u) => u.id !== parseInt(id))
+  res.status(204).send() // Sin contenido (204) cuando la eliminación es exitosa
+})
