@@ -37,4 +37,23 @@ router.post('/', (req, res) => {
   res.status(201).json(newUser)
 })
 
+// Update an user (PUT /users/:id)
+router.put('/.id', (req, res) => {
+  const { id } = req.params
+  const { name } = req.body
+
+  const user = users.find((u) => u.id === parseInt(id))
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' })
+  }
+
+  if (!name) {
+    return res.status(404).json({ message: 'Name is required' })
+  }
+
+  user.name = name
+  res.json(user)
+})
+
 export default router
