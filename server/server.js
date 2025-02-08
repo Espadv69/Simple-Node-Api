@@ -51,3 +51,8 @@ app.delete('/users/:id', (req, res) => {
   users.filter((u) => u.id !== parseInt(id))
   res.status(204).send() // Sin contenido (204) cuando la eliminación es exitosa
 })
+
+// Servir el archivo index.html desde la carpeta 'public' cuando se accede a la raiz
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+})
