@@ -49,7 +49,7 @@ router.put('/.id', (req, res) => {
   }
 
   if (!name) {
-    return res.status(404).json({ message: 'Name is required' })
+    return res.status(400).json({ message: 'Name is required' })
   }
 
   user.name = name
