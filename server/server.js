@@ -56,3 +56,8 @@ app.delete('/users/:id', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 })
+
+// Iniciar el servidor en el puerto 3000
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`)
+})
