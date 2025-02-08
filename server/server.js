@@ -1,15 +1,18 @@
 import express from 'express'
 import cors from 'cors'
 import path from 'path' // Usado para servir archivos estáticos
+import { fileURLToPath } from 'url'
+
+// Configuración para que funcione __dirname en ES Modules
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const app = express()
 const port = 3000
 
-// Permitir solicitudes de cualquier origen
-app.use(cors())
-
-// Middleware para servir archivos estáticos desde la carpeta 'public'
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(cors()) // Habilita CORS
+app.use(express.json()) // Habilita JSON en las peticiones
+app.use(express.static(path.join(__dirname, '../public'))) // Servir archivos estáticos
 
 // Lista de usuarios (simulamos una base de datos aquí)
 let users = [
