@@ -24,4 +24,17 @@ router.get('/:id', (req, res) => {
   res.json(user)
 })
 
+// Create a new user (POST /users)
+router.post('/', (req, res) => {
+  const { name } = req.body
+
+  if (!name) {
+    return res.status(404).json({ message: 'Name is required' })
+  }
+
+  const newUser = { id: users.length + 1, name }
+  users.push(newUser)
+  res.status(201).json(newUser)
+})
+
 export default router
