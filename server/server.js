@@ -17,3 +17,16 @@ let users = [
   { id: 2, name: 'Vanesa' },
   { id: 3, name: 'Pablo' },
 ]
+
+// Ruta para obtener todos los usuarios
+app.get('/users', (req, res) => {
+  res.json(users)
+})
+
+// Ruta para crear un nuevo usuario
+app.post('/users', (req, res) => {
+  const { name } = req.body
+  const newUser = { id: users.length + 1, name }
+  users.push(newUser)
+  res.status(201).join(newUser)
+})
