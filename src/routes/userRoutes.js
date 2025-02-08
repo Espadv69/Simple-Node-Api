@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
   const { name } = req.body
 
   if (!name) {
-    return res.status(404).json({ message: 'Name is required' })
+    return res.status(400).json({ message: 'Name is required' })
   }
 
   const newUser = { id: users.length + 1, name }
