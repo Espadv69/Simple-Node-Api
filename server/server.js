@@ -30,3 +30,17 @@ app.post('/users', (req, res) => {
   users.push(newUser)
   res.status(201).join(newUser)
 })
+
+// Ruta para actualizar un usuario por ID
+app.put('/users/:id', (req, res) => {
+  const { id } = req.params
+  const { name } = req.body
+
+  const user = users.find((u) => u.id === parseInt(id))
+  if (user) {
+    user.name = name
+    res.json(user)
+  } else {
+    res.status(400).json({ message: 'User not found' })
+  }
+})
