@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
       $deleteBtn.textContent = '❌'
       $deleteBtn.addEventListener('click', () => deleteUser(user.id))
 
+      // Update button
+      const $updateBtn = document.createElement('button')
+      $updateBtn.textContent = '✏️'
+      $updateBtn.addEventListener('click', () => updateUser(user.id, user.name)) // ToDo
+
+      $li.appendChild($updateBtn)
       $li.appendChild($deleteBtn)
       $userList.appendChild($li)
     })
@@ -58,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const $nameInput = document.querySelector('.user-name')
       $nameInput.value = ''
     }
+  }
+
+  async function updateUser(id, currentName) {
+    
   }
 
   async function deleteUser(id) {
