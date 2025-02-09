@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const $li = document.createElement('li')
       $li.textContent = `${user.name} (ID: ${user.id})`
 
+      const $btnsContainer = document.createElement('div')
+      $btnsContainer.className = 'btns-container'
+
       // Delete button
       const $deleteBtn = document.createElement('button')
       $deleteBtn.textContent = '❌'
@@ -40,8 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
       $updateBtn.textContent = '✏️'
       $updateBtn.addEventListener('click', () => updateUser(user.id, user.name)) // ToDo
 
-      $li.appendChild($updateBtn)
-      $li.appendChild($deleteBtn)
+      $btnsContainer.appendChild($deleteBtn)
+      $btnsContainer.appendChild($updateBtn)
+      $li.appendChild($btnsContainer)
       $userList.appendChild($li)
     })
   }
