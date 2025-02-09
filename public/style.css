@@ -124,3 +124,15 @@ h2 {
   color: currentColor;
   background: transparent;
 }
+
+.themeToogle {
+  cursor: pointer;
+
+  padding: .5rem;
+
+  border: 2px solid currentColor;
+  border-radius: 10px;
+
+  color: currentColor;
+  background: transparent;
+}
