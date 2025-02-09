@@ -54,6 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const newUser = await response.json()
       console.log('User created:', newUser)
       fetchUsers() // Update user list
+
+      const $nameInput = document.querySelector('.user-name')
+      $nameInput.value = ''
     }
   }
 
