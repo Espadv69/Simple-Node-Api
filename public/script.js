@@ -67,7 +67,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function updateUser(id, currentName) {
-    
+    const newName = prompt('Enter new Name:', currentName)
+
+    if (newName) {
+      const response = await fetch(`/users/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: newName }),
+      })
+
+      if (response.ok) {
+        const updateUser = await response.json()
+        console.log('User updated:', updateUser)
+        fetchUsers()
+      } else {
+        console.error('Error updating user')
+      }
+    }
   }
 
   async function deleteUser(id) {
