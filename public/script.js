@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Delete button
       const $deleteBtn = document.createElement('button')
       $deleteBtn.textContent = '❌'
-      $deleteBtn.addEventListener('click', deleteUser) // ToDo
+      $deleteBtn.addEventListener('click', () => deleteUser(user.id))
 
       $li.appendChild($deleteBtn)
       $userList.appendChild($li)
@@ -54,6 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const newUser = await response.json()
       console.log('User created:', newUser)
       fetchUsers() // Update user list
+    }
+  }
+
+  async function deleteUser(id) {
+    const response = await fetch(`/users/${id}`, {
+      method: 'DELETE',
+    })
+
+    if (response.ok) {
+      fetchUsers() // Reload users list
+    } else {
+      console.error('Error deleting user')
     }
   }
 })
