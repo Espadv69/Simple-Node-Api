@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $form.addEventListener('submit', (event) => {
     event.preventDefault()
     const $name = document.querySelector('.user-name').value
-    createUser($name) // ToDo
+    createUser($name)
   })
 
   // Function to get all users from the API
@@ -29,6 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
     users.forEach((user) => {
       const $li = document.createElement('li')
       $li.textContent = `${user.name} (ID: ${user.id})`
+
+      // Delete button
+      const $deleteBtn = document.createElement('button')
+      $deleteBtn.textContent = '❌'
+      $deleteBtn.addEventListener('click', deleteUser) // ToDo
+
+      $li.appendChild($deleteBtn)
       $userList.appendChild($li)
     })
   }
