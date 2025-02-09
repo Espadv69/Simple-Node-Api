@@ -55,7 +55,13 @@ app.put('/users/:id', (req, res) => {
 // Ruta para eliminar a usuario por ID
 app.delete('/users/:id', (req, res) => {
   const { id } = req.params
-  users.filter((u) => u.id !== parseInt(id))
+  const userIndex = users.findIndex(u => u.id === parseInt(id))
+
+  if (userIndex === -1) {
+    return res.status(404).json({ error: 'User not found'})
+  }
+
+  users.splice(userIndex, 1)
   res.status(204).send() // Sin contenido (204) cuando la eliminación es exitosa
 })
 
