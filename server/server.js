@@ -29,9 +29,13 @@ app.get('/users', (req, res) => {
 // Ruta para crear un nuevo usuario
 app.post('/users', (req, res) => {
   const { name } = req.body
+  if (!name) {
+    return res.status(400).json({ error: 'Name is requerid'})
+  }
+
   const newUser = { id: users.length + 1, name }
   users.push(newUser)
-  res.status(201).join(newUser)
+  res.status(201).json(newUser)
 })
 
 // Ruta para actualizar un usuario por ID
