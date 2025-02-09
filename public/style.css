@@ -92,3 +92,35 @@ h1 {
   color: currentColor;
   background: transparent;
 }
+
+h2 {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.create-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.create-user-form input {
+  padding: .5rem;
+}
+
+.create-user-form button {
+  cursor: pointer;
+
+  padding: .3rem;
+  margin: auto;
+
+  width: 30%;
+
+  font-weight: bold;
+
+  border: 2px solid currentColor;
+  border-radius: 8px;
+
+  color: currentColor;
+  background: transparent;
+}
