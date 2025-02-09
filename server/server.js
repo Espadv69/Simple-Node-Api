@@ -30,7 +30,7 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
   const { name } = req.body
   if (!name) {
-    return res.status(400).json({ error: 'Name is requerid'})
+    return res.status(400).json({ error: 'Name is requerid' })
   }
 
   const newUser = { id: users.length + 1, name }
@@ -55,10 +55,10 @@ app.put('/users/:id', (req, res) => {
 // Ruta para eliminar a usuario por ID
 app.delete('/users/:id', (req, res) => {
   const { id } = req.params
-  const userIndex = users.findIndex(u => u.id === parseInt(id))
+  const userIndex = users.findIndex((u) => u.id === parseInt(id))
 
   if (userIndex === -1) {
-    return res.status(404).json({ error: 'User not found'})
+    return res.status(404).json({ error: 'User not found' })
   }
 
   users.splice(userIndex, 1)
