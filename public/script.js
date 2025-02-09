@@ -18,10 +18,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const $userList = document.querySelector('.users-list')
     $userList.innerHTML = '' // Clean up before add new users
 
-    users.forEach(user => {
+    users.forEach((user) => {
       const $li = document.createElement('li')
       $li.textContent = `${user.name} (ID: ${user.id})`
       $userList.appendChild($li)
     })
+  }
+
+  // Function to create a new user
+  async function createUser(name) {
+    const response = await fetch('/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name }),
+    })
+
+    if (response.ok) {
+      const newUser = await response.json()
+      console.log('User created:', newUser)
+      fetchUsers() // Update user list
+    }
   }
 })
