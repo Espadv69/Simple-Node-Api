@@ -48,7 +48,7 @@ app.put('/users/:id', (req, res) => {
     user.name = name
     res.json(user)
   } else {
-    res.status(400).json({ message: 'User not found' })
+    res.status(404).json({ error: 'User not found' })
   }
 })
 
