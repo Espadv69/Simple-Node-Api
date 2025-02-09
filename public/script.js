@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // ToogleTheme
+  let isDarkMode = false
+  const $themeToogleBtn = document.querySelector('.themeToogle')
+  $themeToogleBtn.addEventListener('click', () => {
+    isDarkMode = !isDarkMode
+    document.body.className = isDarkMode ? 'dark' : 'light'
+  })
+
   // Get all users when page is loaded
   fetchUsers()
 
